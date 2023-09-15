@@ -5,11 +5,17 @@ import './App.css';
 // import  Welcome from './components/Welcome'
 // import Hello from './components/hello'
 // import Message from './components/message'
-import Counter from './components/counter'
+// import Counter from './components/counter'
 // import FunctionClick from './components/funclick'
 // import ClassClick from './components/classclick'
 // import EventBlind from './components/EventBlind'
 // import ParentComponent from './components/parentcomp'
+// import UserGreetings from './components/UserGreetings'
+// import NameList from './components/NameList'
+// import Stylesheet from './components/Stylesheet'
+// import Inline from './components/Inline'
+import './appStyle.css'
+import styles from './appStyle.module.css'
 
 
 class App extends Component {
@@ -17,7 +23,7 @@ class App extends Component {
     return (
       <div className="App">
         
-        <Counter />
+        {/* <Counter /> */}
 
         {/* <Message /> */}
 
@@ -36,6 +42,21 @@ class App extends Component {
         {/* <EventBlind /> */}
 
         {/* <ParentComponent /> */}
+
+        {/* <UserGreetings /> */}
+
+        {/* <NameList /> */}
+
+        {/* <Stylesheet primary= {true} /> */}
+
+        {/* <Inline /> */}
+
+
+        {/* using normal appStyle.css we can use styles in all children components like above mentioned inline, namelist components and there may be conflict among the same classnames
+        but by using appStyles.module.css we can use only in parent and can't be used in child component*/}
+
+        <h1 className='error'>Error</h1>
+        <h1 className={styles.success}>Success</h1>
 
       </div>
     );
