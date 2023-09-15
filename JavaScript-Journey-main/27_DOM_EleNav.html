@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <style>
+    html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+ul{
+  display: flex;
+  background: grey;
+  margin: 0;
+  padding: 15px 0;
+  color: white;
+}
+ul li{
+  list-style: none;
+  margin: 0 23px;
+}
+  </style>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li>Home</li>
+      <li>About Me</li>
+      <li>Hire me</li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <p>Hey I am a good boy</p>
+  </div>
+  <script>
+
+        const changeBodyRed = () => {
+        document.body.firstElementChild.style.background = "red"
+        }
+
+        let b = document.body
+        console.log("First child of b is: ", b.firstChild)
+        console.log("First Element child of b is: ", b.firstElementChild)
+  </script>
+
+  
+</body>
+
+</html>

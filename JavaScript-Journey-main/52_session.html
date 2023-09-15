@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+        Hello world
+        <script>
+                // sessionStorage.getItem("name")
+                // sessionStorage.clear()
+                // sessionStorage.removeItem("name")
+                sessionStorage.setItem("name", "harry")
+                // sessionStorage.removeItem("name")
+
+
+                window.onstorage = (e) => {
+                        alert("changed")
+                        console.log(e)
+                }
+               
+        </script>
+
+</body>
+
+</html>

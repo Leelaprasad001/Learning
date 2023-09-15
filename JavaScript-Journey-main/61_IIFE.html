@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+  Hello world
+
+  <script>
+        let a = () => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+            resolve(456)
+            }, 4000)
+        })
+        }
+
+        (async () => {
+        let b = await a()
+        console.log(b)
+        let c = await a()
+        console.log(c)
+        let d = await a()
+        console.log(d)
+        })()
+
+
+// console.log(d) // Throws error
+
+  </script>
+
+ 
+</body>
+
+</html>

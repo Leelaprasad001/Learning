@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+  Hello world
+
+  <script>
+       class Animal {
+            constructor(name) {
+              this.name = name
+            }
+            walk() {
+              alert("Animal " + this.name + " is walking")
+            }
+            static capitalize(name) {
+              alert(this.name)
+            }
+          }
+
+          j = new Animal("jack")
+          j.walk()
+          // j.capitalize("prasad")
+  </script>
+
+</body>
+
+</html>

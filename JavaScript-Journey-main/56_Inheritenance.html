@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+  Hello world
+
+  <script>
+        
+        class Animal {
+        constructor(name, color) {
+            this.name = name
+            this.color = color
+        }
+        run() {
+            console.log(this.name + " is running!")
+        }
+        shout() {
+            console.log(this.name + " is barking!")
+        }
+        }
+
+        class Monkey extends Animal {
+        eatBanana() {
+            console.log(this.name + " is eating banana")
+        }
+        hide() {
+            console.log(`${this.name} is hiding`)
+        }
+        }
+
+        let ani = new Animal("Bruno", "white")
+        let m = new Monkey("Chimpu", "orange")
+
+        ani.shout()
+        m.eatBanana()
+        m.hide()
+        m.run()
+        m.shout()
+        // ani.hide() //This will throw an error
+  </script>
+
+</body>
+
+</html>

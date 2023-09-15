@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+  Hello world
+
+
+  <script>
+        const sayHello = name => {
+        console.log("greeting" + " " + name)
+        console.log("hi")
+        }
+
+        const x = {
+        name: "Harry",
+        role: "Js Developer",
+        exp: 30,
+        show: function() {
+            let that = this
+            console.log(this)
+            setTimeout(() => {
+            console.log(`The name is ${this.name}\nThe role is ${this.role}`)
+            }, 2000)
+        }
+        }
+        sayHello("Harry", "Good Afternoon")
+        console.log(x.name, x.exp)
+        x.show()
+
+  </script>
+
+ 
+</body>
+
+</html>
