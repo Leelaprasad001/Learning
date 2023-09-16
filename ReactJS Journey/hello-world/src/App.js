@@ -14,9 +14,14 @@ import './App.css';
 // import NameList from './components/NameList'
 // import Stylesheet from './components/Stylesheet'
 // import Inline from './components/Inline'
-import './appStyle.css'
-import styles from './appStyle.module.css'
-
+// import './appStyle.css'
+// import styles from './appStyle.module.css'
+// import Form from './components/Form'
+// import LifecycleA from './components/LifecycleA'
+// import Fragment from './components/Fragment'
+// import Table from './components/Table';
+// import Purecomponent from './components/Purecomponent';
+import ParentComponent from './components/ParentComponent';
 
 class App extends Component {
   render() {
@@ -55,9 +60,21 @@ class App extends Component {
         {/* using normal appStyle.css we can use styles in all children components like above mentioned inline, namelist components and there may be conflict among the same classnames
         but by using appStyles.module.css we can use only in parent and can't be used in child component*/}
 
-        <h1 className='error'>Error</h1>
-        <h1 className={styles.success}>Success</h1>
+        {/* <h1 className='error'>Error</h1> */}
+        {/* <h1 className={styles.success}>Success</h1> */}
 
+        {/* <Form /> */}
+
+        {/* <LifecycleA />*/}
+
+        {/* <Fragment/> */}
+
+        {/* <Table /> */}
+
+        {/* <Purecomponent /> */}
+
+        <ParentComponent />
+        
       </div>
     );
   }
