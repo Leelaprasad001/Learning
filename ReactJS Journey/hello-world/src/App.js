@@ -21,7 +21,11 @@ import './App.css';
 // import Fragment from './components/Fragment'
 // import Table from './components/Table';
 // import Purecomponent from './components/Purecomponent';
-import ParentComponent from './components/ParentComponent';
+// import ParentComponent from './components/ParentComponent';
+// import Ref from './components/Ref';
+// import Focusinput from './components/Focusinput';
+import FRParentInput from './components/FRParentInput';
+
 
 class App extends Component {
   render() {
@@ -73,8 +77,13 @@ class App extends Component {
 
         {/* <Purecomponent /> */}
 
-        <ParentComponent />
+        {/* <ParentComponent /> */}
         
+        {/* <Ref /> */}
+
+        {/* <Focusinput /> */}
+
+        <FRParentInput />
       </div>
     );
   }
