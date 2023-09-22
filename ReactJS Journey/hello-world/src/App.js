@@ -24,7 +24,20 @@ import './App.css';
 // import ParentComponent from './components/ParentComponent';
 // import Ref from './components/Ref';
 // import Focusinput from './components/Focusinput';
-import FRParentInput from './components/FRParentInput';
+// import FRParentInput from './components/FRParentInput';
+// import PortalDemo from './components/PortalDemo';
+// import Hero from './components/Hero';
+// import ErrorBoundary from './components/ErrorBoundary';
+// import ClickCounter from './components/ClickCounter';
+// import HoverCounter from './components/HoverCounter';
+// import ClickCounterTwo from './components/ClickCounterTwo';
+// import HoverCounterTwo from './components/HoverCounterTwo';
+// // import User from './components/User';
+// import RenderProps from './components/RenderProps';
+// import ComponentC from './components/ComponentC';
+// import { UserProvider } from './components/Context';
+// import Axions from './components/Axions';
+// import AxionsPost from './components/AxionsPost';
 
 
 class App extends Component {
@@ -83,7 +96,50 @@ class App extends Component {
 
         {/* <Focusinput /> */}
 
-        <FRParentInput />
+        {/* <FRParentInput /> */}
+
+{/* use of portals in reactjs like in index.html we have div with id="portal-root" and in index.js we have portal code */}
+        {/* <PortalDemo /> */}
+
+
+{/* For Error handling we use ErrorBoundary component */}
+        {/* <ErrorBoundary>
+          <Hero heroName="Batman" />
+        </ErrorBoundary>
+
+        <ErrorBoundary>
+          <Hero heroName="Superman" />
+        </ErrorBoundary>
+
+        <ErrorBoundary>
+          <Hero heroName="joker" />
+        </ErrorBoundary> */}
+
+
+
+ {/* code reusability using HOC and render props */}
+        {/* Higher Order Components */}
+
+        {/* <ClickCounter name="leela"/> 
+        <HoverCounter /> */}
+
+          {/* render props */}
+
+          {/* <ClickCounterTwo />
+          <HoverCounterTwo />
+          <User render={(isLoggedIn) => isLoggedIn ? 'leela' : 'Guest'}/>  */}
+
+          {/* <RenderProps render={(count, incrementCount) => <ClickCounterTwo count={count} incrementCount={incrementCount} />} />
+          <RenderProps render={(count, incrementCount) => <HoverCounterTwo count={count} incrementCount={incrementCount} />} /> */}
+
+  {/* context API */}
+    {/* <UserProvider value="leela">
+       <ComponentC />
+    </UserProvider> */}
+
+  {/* React and HTTP , axios*/}
+         {/* <Axions />  */}
+          {/* <AxionsPost /> */}
       </div>
     );
   }
