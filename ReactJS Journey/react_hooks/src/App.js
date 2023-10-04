@@ -6,7 +6,11 @@ import './App.css';
 // import HookCounter3 from './Components/HookCounter3';
 // import HookCounter4 from './Components/HookCounter4';
 // import ClassCounter1 from './Components/ClassCounter1';
-import UseEffect from './Components/UseEffect';
+// import UseEffect from './Components/UseEffect';
+// import ClassMouse from './Components/ClassMouse';
+// import HookMouse from './Components/HookMouse';
+import MouseContainer from './Components/MouseContainer';
+
 
 function App() {
   return (
@@ -23,7 +27,12 @@ function App() {
 
 {/* useEffect hook */}
       {/* <ClassCounter1 /> */}
-      <UseEffect />
+      {/* <UseEffect /> */}
+      {/* <ClassMouse /> */}
+      {/* <HookMouse /> */}
+      <MouseContainer />
+
+
     </div>
   );
 }
