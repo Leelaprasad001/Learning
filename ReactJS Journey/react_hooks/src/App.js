@@ -9,7 +9,9 @@ import './App.css';
 // import UseEffect from './Components/UseEffect';
 // import ClassMouse from './Components/ClassMouse';
 // import HookMouse from './Components/HookMouse';
-import MouseContainer from './Components/MouseContainer';
+// import MouseContainer from './Components/MouseContainer';
+// import IntervalClassCounter from './Components/IntervalClassCounter';
+import InternalHookCounter from './Components/InternalHookCounter';
 
 
 function App() {
@@ -25,12 +27,14 @@ function App() {
       {/* <HookCounter3 /> */}
       {/* <HookCounter4 /> */}
 
-{/* useEffect hook */}
+{/* useEffect hook  there is an flow execution of useEffect hook with each problem arised in class that is solved by useEffect hook */}
       {/* <ClassCounter1 /> */}
       {/* <UseEffect /> */}
       {/* <ClassMouse /> */}
       {/* <HookMouse /> */}
-      <MouseContainer />
+      {/* <MouseContainer /> */}
+      {/* <IntervalClassCounter /> */}
+      <InternalHookCounter />
 
 
     </div>
