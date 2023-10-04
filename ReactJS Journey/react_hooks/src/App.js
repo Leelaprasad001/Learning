@@ -11,8 +11,12 @@ import './App.css';
 // import HookMouse from './Components/HookMouse';
 // import MouseContainer from './Components/MouseContainer';
 // import IntervalClassCounter from './Components/IntervalClassCounter';
-import InternalHookCounter from './Components/InternalHookCounter';
+// import InternalHookCounter from './Components/InternalHookCounter';
+// import Datafetching from './Components/Datafetching';
+import ComponentC from './Components/ComponentC';
 
+export const UserContext = React.createContext()
+export const ChannelContext = React.createContext()
 
 function App() {
   return (
@@ -34,8 +38,16 @@ function App() {
       {/* <HookMouse /> */}
       {/* <MouseContainer /> */}
       {/* <IntervalClassCounter /> */}
-      <InternalHookCounter />
+      {/* <InternalHookCounter /> */}
+      {/* <Datafetching /> */}
 
+{/* useContext hook  */}
+      <UserContext.Provider value={'Leela Prasad'}>
+        <ChannelContext.Provider value={'Bantu'}>
+       
+          <ComponentC />
+        </ChannelContext.Provider>
+      </UserContext.Provider>
 
     </div>
   );
