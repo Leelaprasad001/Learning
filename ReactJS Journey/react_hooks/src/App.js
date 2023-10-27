@@ -13,12 +13,40 @@ import './App.css';
 // import IntervalClassCounter from './Components/IntervalClassCounter';
 // import InternalHookCounter from './Components/InternalHookCounter';
 // import Datafetching from './Components/Datafetching';
-import ComponentC from './Components/ComponentC';
+// import ComponentC from './Components/ComponentC';
+// import Counterone from './Components/Counterone';
+// import CounterTwo from './Components/CounterTwo';
+// import CounterThree from './Components/CounterThree';
+// import CompA from './Components/CompA';
+// import CompB from './Components/CompB';
+// import CompC from './Components/CompC';
 
-export const UserContext = React.createContext()
-export const ChannelContext = React.createContext()
+// const initialstate = 0
+// const reducer = (state, action) => {
+//     switch(action){
+//         case 'increment':
+//             return state + 1
+//         case 'decrement':
+//             return state - 1
+//         case 'reset':
+//             return initialstate
+//         default:
+//             return state
+//     }
+// }
+
+
+// export const CountContext = React.createContext()
+// export const ChannelContext = React.createContext()
+
+// import Datafetchingone from './Components/Datafetchingone';
+import Datafetchingtwo from './Components/Datafetchingtwo';
+
 
 function App() {
+
+  // const [count, dispatch] = useReducer(reducer, initialstate)
+
   return (
     <div className="App">
 
@@ -42,12 +70,30 @@ function App() {
       {/* <Datafetching /> */}
 
 {/* useContext hook  */}
-      <UserContext.Provider value={'Leela Prasad'}>
+      {/* <UserContext.Provider value={'Leela Prasad'}>
         <ChannelContext.Provider value={'Bantu'}>
        
           <ComponentC />
         </ChannelContext.Provider>
-      </UserContext.Provider>
+      </UserContext.Provider> */}
+
+{/* usereducer */}
+      {/* <Counterone /> */}
+      {/* <CounterTwo /> */}
+      {/* <CounterThree /> */}
+
+
+   {/* usereducer and useContext */}
+   {/* <CountContext.Provider value={{ countstate: count, countdispatch: dispatch}}>
+      Count - {count}
+       <CompA />
+       <CompB />
+       <CompC />
+    </CountContext.Provider> */}
+    {/* data fetching using usereducer */}
+    {/* <Datafetchingone />	 */}
+    {/* using useReducer for data fetching */}
+    <Datafetchingtwo />
 
     </div>
   );
