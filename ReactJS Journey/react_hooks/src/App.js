@@ -40,7 +40,7 @@ import './App.css';
 // export const ChannelContext = React.createContext()
 
 // import Datafetchingone from './Components/Datafetchingone';
-import Datafetchingtwo from './Components/Datafetchingtwo';
+// import Datafetchingtwo from './Components/Datafetchingtwo';
 
 
 function App() {
@@ -93,7 +93,7 @@ function App() {
     {/* data fetching using usereducer */}
     {/* <Datafetchingone />	 */}
     {/* using useReducer for data fetching */}
-    <Datafetchingtwo />
+    {/* <Datafetchingtwo /> */}
 
     </div>
   );
@@ -121,3 +121,7 @@ export default App;
 //React provides a few built-in Hooks like useState. You can also create your own Hooks to reuse stateful behavior between different components. We’ll look at the built-in Hooks first.
 //Hooks are a way to reuse stateful logic, not state itself. In fact, Hooks useState and useEffect don’t even have to come from a React or a third-party library. You can definitely write custom Hooks that maintain their own state.
 //Hooks are a more direct way to use the React features you already know — such as state, lifecycle, context, and refs. They don’t fundamentally change how React works, and your knowledge of components, props, and top-down data flow is just as relevant. Hooks offer a more direct API to the React concepts you already know without introducing anything new.
+//usestate is used when using primitive data types used(numbers, var, bool) and one or two state transitions
+//- used when no related state transitions and no business logic and local state
+//useReducer is used when using object data types and too many state transitions
+//- used when related state transitions and complex business logic and global state
