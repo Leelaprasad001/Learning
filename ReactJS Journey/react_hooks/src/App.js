@@ -41,7 +41,11 @@ import './App.css';
 
 // import Datafetchingone from './Components/Datafetchingone';
 // import Datafetchingtwo from './Components/Datafetchingtwo';
-
+// import Parent from './Components/Parent';
+// import Counter from './Components/Counter';
+// import Focus from './Components/Focus';
+// import ClassTimer from './Components/ClassTimer';
+import HookTimer from './Components/HookTimer';
 
 function App() {
 
@@ -84,17 +88,28 @@ function App() {
 
 
    {/* usereducer and useContext */}
-   {/* <CountContext.Provider value={{ countstate: count, countdispatch: dispatch}}>
-      Count - {count}
-       <CompA />
-       <CompB />
-       <CompC />
-    </CountContext.Provider> */}
-    {/* data fetching using usereducer */}
-    {/* <Datafetchingone />	 */}
-    {/* using useReducer for data fetching */}
-    {/* <Datafetchingtwo /> */}
+      {/* <CountContext.Provider value={{ countstate: count, countdispatch: dispatch}}>
+            Count - {count}
+            <CompA />
+            <CompB />
+            <CompC />
+      </CountContext.Provider> */}
+      {/* data fetching using usereducer */}
+      {/* <Datafetchingone />	 */}
+      {/* using useReducer for data fetching */}
+      {/* <Datafetchingtwo /> */}
 
+   {/* useCallback Hook */}
+      {/* <Parent /> */}
+
+    {/* usememo hook */}
+      {/* <Counter /> */}
+
+    {/* useRef hook */}
+      {/* <Focus /> */}
+      {/* <ClassTimer /> */}
+      <HookTimer />
+      
     </div>
   );
 }
