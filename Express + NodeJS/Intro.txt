@@ -1,0 +1,39 @@
+Node.js is an open-source, cross-platform JavaScript runtime environment that executes JavaScript code outside of a browser.
+
+-> Node.js lets developers use JavaScript to write command line tools and for server-side scripting—running scripts server-side to produce dynamic web pages.
+-> Node.js is built on Chrome's V8 JavaScript engine, which provides it with its speed and performance. Node.js is also highly scalable, making it a good choice for high-traffic applications.
+-> Node.js is used by many popular companies, including Netflix, PayPal, and Uber. It is also a popular choice for developing microservices, which are small, self-contained services that can be combined to create larger applications.
+
+Here are some of the key features of Node.js:
+-> Cross-platform: Node.js can run on Windows, Linux, macOS, and other Unix-like systems.
+-> Open source: Node.js is open source software, which means that it is free to use and distribute.
+-> JavaScript: Node.js uses JavaScript, which is a popular and widely used programming language.
+-> Asynchronous I/O: Node.js uses asynchronous I/O, which makes it very efficient and scalable.
+-> Event-driven: Node.js is event-driven, which makes it very responsive and easy to use.
+
+Difference between nodejs and browser JavaScript
+    Browser                     Node.js
+
+    windows                     No window
+    DOM                         NO DOM
+    Interactive Apps            server side Apps
+    no filesystem               file systems
+    fragmentation               versions
+    ES6 Modules                 commonJS
+
+
+
+Concepts Learned
+-> global
+-> Modules
+-> require
+-> OS
+-> Path
+-> FS (asynchronously and synchronously)
+-> HTTP
+-> NPM (Node Package Manager)
+
+
+Resources : freecodecamp 
+(https://www.youtube.com/watch?v=Oe421EPjeBE)
+(https://github.com/john-smilga/node-express-course)
