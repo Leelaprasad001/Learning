@@ -8,7 +8,7 @@ const first = readFileSync('./content/first.txt', 'utf8')
 const second = readFileSync('./content/second.txt', 'utf8')
 
 // console.log(`First file content: ${first}`)
-//flag is used not to change the content
+//flag is used not to change the existing content
 
 writeFileSync('./content/result-sync.txt', 
     `Hello Leela Prasad, Here is the result: ${first}, ${second}`, { flag: 'a' })

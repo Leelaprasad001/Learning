@@ -32,6 +32,9 @@ Concepts Learned
 -> FS (asynchronously and synchronously)
 -> HTTP
 -> NPM (Node Package Manager)
+-> Event Loop
+-> Event-Driven (EventEmitter)
+-> Streams (Writeable, Readable, Duplex, Transform)
 
 
 Resources : freecodecamp 
