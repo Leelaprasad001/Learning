@@ -5,7 +5,12 @@ license. It features a modular design for  building web applications and APIs th
 
 Concepts Learned
 -> Https and methods
-
+-> API - JSON
+-> Send Data
+-> Res.JSON()
+-> SSR - Template
+-> Send Template
+-> Res.render()
 
 Resources : freecodecamp 
 (https://www.youtube.com/watch?v=Oe421EPjeBE)
