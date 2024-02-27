@@ -11,6 +11,7 @@ Concepts Learned
 -> SSR - Template
 -> Send Template
 -> Res.render()
+-> MiddleWare
 
 Resources : freecodecamp 
 (https://www.youtube.com/watch?v=Oe421EPjeBE)
