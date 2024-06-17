@@ -1,0 +1,798 @@
+Resources: https://www.youtube.com/watch?v=GFgJkfScVNU&t=1456s
+        - https://www.docker.com/
+        - https://www.docker.com/products/docker-desktop/
+
+
+Docker overview: 
+- Docker is an open platform for developing, packaging, shipping, and running applications. 
+- consistency, Portability
+- Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. 
+- With Docker, you can manage your infrastructure in the same ways you manage your applications. 
+- By taking advantage of Docker's methodologies for shipping, testing, and deploying code, you can significantly reduce the delay between writing code and running it in production.
+
+The Docker platform:
+- Docker provides the ability to package and run an application in a loosely isolated environment called a container. 
+- The isolation and security lets you run many containers simultaneously on a given host. 
+- Containers are lightweight and contain everything needed to run the application, so you don't need to rely on what's installed on the host. 
+- You can share containers while you work, and be sure that everyone you share with gets the same container that works in the same way.
+
+Docker provides tooling and a platform to manage the lifecycle of your containers:
+- Develop your application and its supporting components using containers.
+- The container becomes the unit for distributing and testing your application.
+- When you're ready, deploy your application into your production environment, as a container or an orchestrated service. 
+- This works the same whether your production environment is a local data center, a cloud provider, or a hybrid of the two.
+
+What can I use Docker for?
+- Fast, consistent delivery of your applications
+- Docker streamlines the development lifecycle by allowing developers to work in standardized environments using local containers which provide your applications and services. Containers are great for continuous integration and continuous delivery (CI/CD) workflows.
+
+Docker architecture:
+- Docker uses a client-server architecture. 
+- The Docker client talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers.
+- The Docker client and daemon can run on the same system, or you can connect a Docker client to a remote Docker daemon. 
+- The Docker client and daemon communicate using a REST API, over UNIX sockets or a network interface. 
+- Another Docker client is Docker Compose, that lets you work with applications consisting of a set of containers.
+
+The Docker daemon:
+- The Docker daemon (dockerd) listens for Docker API requests and manages Docker objects such as images, containers, networks, and volumes. 
+- A daemon can also communicate with other daemons to manage Docker services.
+
+The Docker client:
+- The Docker client (docker) is the primary way that many Docker users interact with Docker.
+- When you use commands such as docker run, the client sends these commands to dockerd, which carries them out. 
+- The docker command uses the Docker API. The Docker client can communicate with more than one daemon.
+
+Docker Desktop:
+- Docker Desktop is an easy-to-install application for your Mac, Windows or Linux environment that enables you to build and share containerized applications and microservices. 
+- Docker Desktop includes the Docker daemon (dockerd), the Docker client (docker), Docker Compose, Docker Content Trust, Kubernetes, and Credential Helper. 
+
+Docker registries
+- A Docker registry stores Docker images. 
+- Docker Hub is a public registry that anyone can use, and Docker looks for images on Docker Hub by default. 
+- You can even run your own private registry.
+- when you use the docker pull or docker run commands, Docker pulls the required images from your configured registry. 
+- When you use the docker push command, Docker pushes your image to your configured registry.
+
+Docker objects
+- When you use Docker, you are creating and using images, containers, networks, volumes, plugins, and other objects. 
+- Images: An image is a read-only template with instructions for creating a Docker container. 
+        - Often, an image is based on another image, with some additional customization. 
+        - For example, you may build an image which is based on the ubuntu image, but installs the Apache web server and your application, as well as the configuration details needed to make your application run.
+- Containers: A container is a runnable instance of an image. 
+        - You can create, start, stop, move, or delete a container using the Docker API or CLI. 
+        - You can connect a container to one or more networks, attach storage to it, or even create a new image based on its current state.
+        - By default, a container is relatively well isolated from other containers and its host machine. 
+        - You can control how isolated a container's network, storage, or other underlying subsystems are from other containers or from the host machine.
+
+Intro :
+  
+What’s Docker?
+ - it's a platform that enables the development, packaging and execution of applications in a unified environment by 
+ - clearly specifying our applications requirements such as no Js versions and necessary
+ - packages Docker generates a self-contained box that includes its own operating system and all the components essential for running our application
+ - this box acts like a separate computer virtually providing the operating system run times and everything required for our application to run smoothly but why
+
+Why should we use Docker?
+ - should we bother using Docker at all big shots like eBay Spotify washing post
+ - Yelp and Uber noticed that using Docker made their apps better and faster in
+ - terms of both development and deployment Uber for example said in their study that Docker helped them onboard new developers in minutes instead of weeks
+ - so what are some of the most common things that Docker helps 
+ - first of all consistency across environments, Docker ensures that our app runs the same name on my computer your computer and your boss's computer no more it works on my machine drama it also means
+   everyone uses the same commands to run the app no matter what computer they're using since downloading services like node.js isn't the same on Linux Windows or Mac OS developers usually have to
+   deal with different operating systems. 
+ - second thing is isolation, Docker maintains a clear boundary between our app and its dependencies so we'll have no more
+   clashes between applications much like neatly partitioned lunchbox compartments for veggies fruits and bread this improves security simplifies debuging and makes development process smoother
+ - next thing is is portability, Docker lets us easily move our applications between different stages like from development to testing or testing to production it's like packaging your app in a lunchbox
+   that can be moved around without any hassle 
+ - it also helps with Version Control as just like we track versions of our code using git Docker helps us track versions of our application it's like having a rewind button for our app so we can return to a
+   previous version if something goes wrong talking about scalability 
+
+
+How does Docker work?
+ - Docker work there are two most important Concepts in Docker, images and containers and the entire workflow revolves around them.
+ - Docker image is a lightweight Standalone executable package that includes
+   everything needed to run a piece of software including the code run times like node.js
+   libraries system tools and even the operating system think of a Docker image as a recipe for our application 
+   it not only lists the ingredients being code and libraries but also provides the instructions 
+   such as runtime and system tools to create a specific meal meaning to run our application
+ - we would want to run this image somewhere right and that's where containers come in. 
+   Docker container is a runnable instance of a Docker image it represents the execution environment for a specific application including its code runtime system tools
+   and libraries included into Docker image, a container takes everything specified in the image and follows its instructions by executing necessary commands downloading packages and
+   setting things up to run our application 
+ - volumes a Docker
+   volume is a persistent data storage mechanism that allows data to to be shared between a dock container and the
+   host machine which is usually a computer or a server or even among multiple
+   containers. it ensures data durability and persistence even if the container is stopped or removed
+ - next concept is Docker Network 
+   it's a Communication channel that enables different Docker containers to talk to each each other or with the external World 
+   it creates connectivity allowing containers to share information and services while maintaining isolation.
+
+Docker workflow:
+ - Distributed into three parts 
+ - Docker client & Docker host (Docker Damon) and Docker registry (Docker Hub) 
+ - Docker client is the user interface for interacting with Docker it's the tool 
+   we use to give Docker commands we issue commands to the docker client via the command line or a graphical user
+   interface instructing it to build run or manage images or containers.
+ - Docker host or Docker Damon is the background process responsible for managing containers on the host system
+   it listens for Docker client commands creates and manages containers builds images and handles other Docker related tasks
+ - Docker registry or Docker Hub is a centralized repository of Docker images
+   it hosts both public and private Registries or packages
+   Docker is to Docker Hub what Git is to Github.
+   In a nutshell Docker images are stored in these Registries and when you run a container Docker may pull the required image 
+   from the registry if it's unavailable locally.
+
+
+How to build an image for your application:
+- Dockerfile is a text file that contains a series of instructions or commands that Docker uses to build
+let's try to run one of the images listed in the docker Hub to see
+how that works let's choose one of the operating system images as an example let's go for Ubuntu on the right side of
+the details of the image you'll see a command copy it and try executing it in your terminal but before before we paste
+it first create a new empty folder on our desktop called Docker
+course and then drag and drop it to our empty Visual Studio code window open up
+your empty terminal and paste the command Docker pool Ubuntu it's going to
+do it using the default tag latest and it's going to take some time to pull it as you can see it's working Docker
+initially checks if there are any images with that name on our machine if not it
+searches for the docker Hub finds the image and automatically installs it on our machine now if we go back to Docker
+desktop we'll immediately see an auntu image right here under images to confirm
+that we actually installed a whole different operating system we can run a command that executes the image do you
+know how that process is called creating a container so let's run docker
+run-it for interactive and then Ubuntu and press enter after you run
+this command head over to Docker desktop and if you go to Containers you'll see a
+new container based off of the Ubuntu image coming back to our terminal you'll see something different if you've ever
+tried Ubuntu before you'll notice that this terminal looks exactly like the Ubuntu command line Let's test out some
+of the commands LS for list we we have cd home to move to our home directory MK
+deer which is going to create a new directory called hello we can once again LS CD into hello to navigate to it we
+can create a new hello- ubun to.tx we can LS to check it out if it's
+there and it is we have just used different Ubuntu commands right here
+within our terminal amazing isn't it we are running an entirely different operating system simply by executing a
+Docker image within a Docker container for now let's kill this terminal by
+pressing this trash icon and navigate back to our Docker desktop now a bigger
+question awaits how do we create our own Docker images we can start from a super
+Hello Docker Demo
+simple Docker app that says hello world let's create a new folder called hello
+Das Docker within it we can create a simple
+hello.js file and we can type something like console.log
+hello Docker then comes the interesting part
+next we'll create a Docker file yep it's just Docker file like this no dots no
+extensions vs code might prompt you to install a Docker extension and if it does just go go ahead and install it now
+let's figure out what goes into the docker file do you remember the special Docker syntax we talked about earlier
+well let's put it to use first we have to select the base image to run the app
+we want to run a Javascript file so we can use the node runtime from the docker Hub we'll use this one with an Alpine
+version It's a lightweight version of Linux so we can type something like from
+node 20- Alpine next we want to set the working
+directory to for slapp this is the directory where commands will be run and
+then SLA is a standard convention so we can type work there and then type for/
+slapp next we can write copy dot dot like this this will copy everything from
+our current directory to the docker image the first Dot is the current
+directory on our machine and the second dot is the path to the current directory
+within the container next we have to specify the command to run the app in this case CMD
+node hello.js will do the trick and now that
+we have created our Docker file let's move into the folder where the docker file is located by opening up the
+terminal and then running CD hello D Docker inside of here let's type Docker
+build DT and T stands for the tag which is optional and if no tag is provided it
+defaults to the latest tag and finally the path to the docker file and in this
+case that's hello- Docker dot because we're right there and press
+enter it's building it and I think it succeeded great to verify that the image
+has been created or not we can run a command Docker images and you can see
+that we have two images Ubuntu as well as hello Docker created 16 seconds ago
+now if you're a more visual person you can also visit Docker desktop here if
+you head to images you can see all of the images we have created so far now that we have our image let's run
+or containerize it to see what happens so if we go back we can run Docker run
+hello- Docker there we have it an excellent conso
+log if we go back to Docker desktop and then open up that
+container and navigate inside of the files you'll see a lot of different
+files and folders but there is one special file here want to make a guess
+yes it's app which we created in Docker file moving inside it we can see that it
+contains two of the same files we have in our application Docker file and hello
+JS exact replica also if we want to open up our application in Shell mode similar
+to what we did with Ubuntu we have to run Docker run it hello- doer
+sh this puts us direct directly within the operating system and then you can
+simply run node hello Doge JS to see the same output we can also publish the
+images we have created on Docker but before that let's build something a bit more complex than the simple hello world
+and then let's publish it to the docker Hub which means that now we're diving
+into the real deal dockerizing react GS applications let's dockerize our first
+React Docker Demo
+react application I'm going to do that by quickly spinning up a simple react project by running the command mpm
+create V at latest and then react D doer as the folder name if you press enter
+it's going to ask you which flavor of JavaScript you want in this case let's go with react sure we can use subscript
+and we can now CD into react Das doer and we won't run any mpm install or mpm
+run Dev because the dependencies will be installed within our dock Riz container
+so with that said now if we clear it we are within react Docker and you can see
+our new react application right here so as the last time you already know the
+drill we need to create a new file called Docker file as you can see it automatically gets this icon and it's
+going to be quite similar to the original Docker file that we had but this time I want to go into more depth
+about each of these commands so you know exactly what they do and because of that
+below this course you can find a complete Docker file for our react Docker application copy it and paste it
+here once you do that you should be able to see something that looks like this it
+seems like there's a lot of stuff but there really isn't it's just a couple of commands but I wanted to take my time to
+deeply explain all of the commands we're using right here so let's go over all of
+that together first we need to set the base image to create the image for react
+app and we are setting it up from node 20 Alpine it's just a version 20 of node
+you can use any other version you want and in these courses I want to teach you how to think for yourself not
+necessarily just replicate what I'm doing here so if you hover over the command you can see exactly what it does
+set the base image to use for subsequent instructions from must be the first
+instruction in a Docker file and you can see a couple of examples you can use use a from base image or you can even add a
+tag or a digest in this case we're adding a tag of a specific version but it's not necessary and if you click
+online documentation you can find even more instructions on exactly how you can
+use this command next we have to play with permissions a bit now I know that these couple of commands could be a bit
+confusing but we're doing it to protect our new container from Bad actors and
+users wanting to do something bad with it so because of that we create a new user with permissions only to run the
+app the S is used to create a system user and that g is used to add that user
+to a group this is done to avoid running the app as a root user that has access
+to everything that way any vulnerability in the app can be exploited to gain access to the whole system this is
+definitely not mandatory but it's definitely a good practice to run the app as a non user which is exactly what
+we're doing here we're creating a system user adding it to the user group and
+then we set the user to run the app user app and you can see more information about right here set the username to use
+when running the image next we set the working directory to SLA and then we
+copy the package Json and package log Json to the working directory this is
+done before copying the rest of the files to take advantage of of docker's cache if the package Json and package
+log Json files haven't changed Docker will use the cache dependencies so copy
+files or folders from source to destination in the images file system so
+first you specify what you want to copy from the source and then you provide a path where you want to paste it
+to next sometimes the ownership of the files in the working system is changed
+to root and thus the app can't access the files and throws an error E access
+permission denied to avoid this change the ownership of the files to the root user so we're just changing it back from
+what we did above then we change the ownership of the app directory to the app user by running a new command in
+this case CH own where we specify which user and group and directory we're changing the access to and then we
+change the user back to the app user and once again if these commands are not 100% clear no worries this is just about
+playing with user permissions to not let Bad actors play with our container finally we install dependencies copy the
+rest of the files to the working directory expose the port 5173 to tell
+Docker that the container listens on that specifi Network and then we run the app if you want to learn about any of
+these commands hover over it you can already to get a lot of info and then go to online documentation if you need even
+more with that said that is our Docker file another great practice that we can do is
+just go right here and create another file similar tog ignore this time it's
+called Docker ignore and here you can add nodecore modules just to Simply
+exclude it from Docker because we don't really need it in our node modules on our GitHub we don't need it anywhere not
+even in Docker Docker is playing with our package Json and package lock Json and then rebuilds it when it needs to
+now now finally once we have our Docker file we are ready to build it we can do
+that by opening up a new terminal navigating to react Docker and we can
+build it by running the command Docker build- t for tag which we can leave as
+default react Das Docker which is the name of the image and then dot to
+indicate that it's in the current directory and finally press enter this is going to build out the image but we
+already know that an image is not too much on its own to use the image we have
+to actually run it so let's run it by running the command Docker run react D
+Docker and press enter as you can see it built out all of the packages needed to
+run our app and it seems to be running on Local Host 5173 but if we open it up it looks like
+the site isn't showing even though we specified that expose endpoint right here saying that we're listening on
+5173 so why is it not working well first we need to understand that expose does
+only one job and it's to inform Docker that the container should listen to that
+specific exposed port in runtime that does make sense but then why didn't work
+well it's because we know on which board the docker container will listen to Docker knows it and so does the
+container but someone is missing that information any guesses
+well it's the host is the main computer we're using to run it as we know
+containers run in isolated environments and by default they don't expose their
+ports to the host machine or anyone else this means that even if a process inside
+the container is listening on a specific Port the port is not accessible from outside the container and to make our
+host machine aware of that we have to utilize a concept known as Port mapping
+it's a concept in Docker that allows us to map boards between the docker container and the host machine it's
+exactly what we want to do so to do that let's kill our entire terminal by
+pressing this trash icon reopen it reigate to react Das doer and let's run
+the same command Docker run and then we're going to add a p flag right here
+and say map 5173 in our container to 51 73 on our host machine and then specify
+which image do we want to run and press enter now as you can see it seems to be
+good but if I run it same things happens again it's not docker's fault but it's
+something that we missed it's vit if you read the logs right here it's going to
+say use-- host to expose so we have to expose that port for V 2 so let's modify
+our p pack a Json by going right here and adding the dash dash host to expose
+our Dev environment and now again we'll have to stop everything kill our
+terminal reopen it rigate to react Docker and then run the image again
+which makes you wonder wouldn't it be great if Docker does it on its own whenever we make some file changes and
+the answer is yes definitely and Docker heard us later in the course I'll teach
+you how to use the latest Docker features that allow us to automatically
+build images and save us from all of this hassle but I first want to teach you how to do it manually to understand
+how cool Docker composes which I'm going to teach you later on so let's just rerun the same
+command and now we get an error this means that something is already connected to that port and this indeed
+is true if you check out our containers or images we have accumulated a large
+number of images so let's do a quick practice on how to clear out all of our
+images or containers back in our terminal we can run a command Docker PS which is going
+to give us a list of all of the current containers alongside their IDs images
+created status and more as well as on which ports are they listening on this is for all the active running containers
+and if we want to get absolutely all containers we can run Docker ps- a and
+here you can see absolutely all containers that we have that's a lot now the question is how do we stop a
+specific container well we can stop it by running Docker stop and then use the
+name or the ID of a specific container you can use the first three digits of the container ID or you can use the
+entire name so let's use c3d c3d and if you get back the same command
+it means that it successfully stopped it if we go back to Containers you can see
+that the c3d is no longer running but now let's say we have accumulated a large number of
+containers which we indeed have both the images and containers so how can we get
+rid of all of the inactive containers we have created so far well we can do that by running Docker container prune if you
+run that it's going to say this will remove all stopped containers so let's press Y and that's fine we only had one
+that was stopped that we manually stopped and it pruned but you can also use the command Docker RM to remove a
+specific container by name or its ID so let's try with this one
+aa7 Docker RM aa7 and press enter here
+we get a response saying that we cannot stop a running container of course you could always use the Das Das force and
+that's going to kill it we can verify right here these commands are great and
+it's always great to know your way around the CLI but nowadays we also have Docker desktop which allows us to play
+with it within a graphical user interface which makes things so much simpler you can simply use the stab
+action to stop the container or you can use the delete action to delete a container it is that easy similarly you
+can do that for images by selecting it and deleting all images and you can follow my process of deleting everything
+right now I just want to ensure that we have a clean working environment before we build out our react example one more
+time and while we're here if you have any volumes feel free to delete those as
+well there we go so moving back we want to First build
+out our image and now let's repeat how to do that you simply have to run Docker
+build- T the name of the image and then dot this is going to build out the image
+after you do that we have to run it with Port mapping included so that's going to be Docker run- P map the ports and then
+the name of the container you want to run and press enter it's going to run it
+and you can see a bit of a difference right now here it's exposed to the network and if you try to run Local Host
+5173 you can see that this time it actually works that's great but now if we go back
+to our code go to Source app and change this V and react to something like
+Docker is awesome and save
+it back on our Local Host you can see that it didn't make any
+changes that's very unfortunate we hope that this container could somehow stay up toate with what we are
+developing otherwise it would be such a pain to constantly rebuild containers with new changes this happens because
+when we build the docker image and run the container the code is then copied
+into that container you can see all the files right here and they're not going to change so even if you go right here
+to app and then source and then app TSX right click it and click edit file
+you'll be able to see that here it still says V plus react so what can we do well we'll have
+to further adjust our Command so let's simply stop our active container so we can then rerun a new one on the same
+port let's go back to our Visual Studio code clear it make sure that you're in
+the react D Docker folder and we need to run the same command then we have to
+also add a string sign dollar sign PWD close it and then say Colin slapp
+and close it like so it seems a bit complicated doesn't it
+what this means is that we tell Docker to mount the current working directory
+where we run the docker run command into the app directory inside the
+container this effectively means that our local code is linked to the container and any changes we make
+locally will be immediately reflected inside the running container this tiny
+PWD represents the current working directory over here it executes in the runtime to provide a current working
+directory path and v v stands for volume that's because we're creating a volume
+that's going to keep track of all of those changes remember that we talked about volumes before they try to ensure
+that we always have our data stored somewhere but before you go ahead and press enter there's one more additional
+flag we have to add to this command and that is yet another DV but this time
+slapp for/ nodecore modules why are we doing this well we have to create a new
+volume for the node modules directory within the container we do this to ensure that the volume Mount is
+available in its container so now when we run the container it will use the existing node modules from the named
+volume and any change to the dependencies won't require a reinstall when starting the container this is
+particularly useful in development scenarios where you frequently start and stop containers during code changes so
+let's run it it's running on Local Host 5173 Docker is indeed awesome but now
+the question is if we change it what's going to happen so we go here and say
+something like Docker is awesome but also also add a couple of whales at the end press save and then you can see pmv
+update source appsx and now if we run it we have a couple of whales right here
+there we go so whenever you change something you'll see the result instantly in the UI that's
+amazing and even if we go back to our Docker desktop you can see that now we have a volume that keeps track of these
+changes and if you go under containers go to our active container go to files
+and then let's go to app Source app TSX and edit you can see that the changes
+are also reflected right here so that's it you have successfully learned how to
+dockerize a front-end application not many developers can do that but you you
+just getting started now that we have created our Docker image let me teach you how to publish it we we can do that
+Publish Docker Image
+using the command line so let's go right here kill our current terminal reopen it
+and CD into react Docker next we can run Docker login and
+if you already logged in with Docker desktop it should automatically authenticate you next we can publish our
+image using this command Docker tag react Das doer then you need to add your
+username and the name of of the image you can find your username by
+going to Docker desktop clicking on the icon in top right and then copying it from there in my case it's JavaScript
+Mastery and then I'm going to do SL react DD it's okay if we don't provide
+any tag right here as the default tag is going to be Colin latest also don't
+forget that below this course I provided a complete list of all of the commands including different tag commands to help
+you get started with Docker anytime anywhere so check them out and try
+running some of them finally let's publish our image and now we have to run
+Docker push JavaScript Mastery or in this case your username SL react D
+Docker and this is going to actually push it to our Docker Hub there we
+go now if you go back to Docker desktop you can see that we have a JavaScript
+Master react Docker in image that is now actually pushed on the Hub and you can
+also check it out right here by going to local Hub images and then you can see JavaScript Mastery has one latest image
+and another cool thing you can do is go to hub. do.com where you can find your image
+published under repositories and then check out your account right here and you'll be able to see your react Docker
+image right here live on docker Hub and now other people can run this image as
+well and containerize their applications by using it how cool is that and that's
+all it is to it you have successfully published your first Docker image but
+now that you know the basis let's find a more efficient way of dockerizing our applications oh yeah developers are lazy
+Docker Compose (React Demo)
+so writing and running all of these commands for building images and containers and then mapping them to host
+is just too much to do but it's not the only way we can improve or automate this
+process with Docker compose and run everything our application needs to run
+through Docker using one small single command yes we can use a single
+straightforward command to run the entire application so say hi to Docker compose
+it's a tool that allows us to Define and manage multi-container Docker
+applications it uses a yaml file to configure the services networks and
+volumes for your application enabling us to run and scale the entire application
+with a single command we don't have to run 10 commands separately to run 10
+containers for one application thanks to Docker compose we can list all the
+information needed to run these 10 containers or more in a single file and then run only one command that
+automatically triggers running the rest of the containers in simple words Docker
+compose is like a chef's recipe for preparing multiple meals in a single dinner it allows us to Define and manage
+the entire cooking process for recipes in one go specifying ingredients cooking
+instructions and how different parts of the meal should interact with Docker compose we can
+serve up our entire culinary experience with just one
+command and while we can manually create these files on our own and set things up
+Docker also provides us with a CLI that generates these files for us it's called
+Docker inid using Docker inid we initialize our application with all the
+files needed to dockerize it by specifying our Tech choices so let's go ahead and create
+another V project which we can use to test out the features of Docker compose
+and Docker in it we can open up a terminal and then run mpm create V add
+latest in this case we can call it v- project and press
+enter it's going to ask us a couple of questions it can be a react tapescript application we can CD into it and please
+make sure that you are in the docker course meaning in the root of our folder
+so so it needs to create it right next to react if you were in react before when you run this command it's going to
+create it inside of it if that's the case deleted and just navigate to Docker course and then run the
+command now we can CD into V project and we can learn how to use
+Docker in it it's so simple you simply run Docker in it that's all there is to
+it and it's going to ask you many questions based off which it's going to generate a perfect yaml file for you so
+what application platform are we planning on using in this case it's going to be node so you can simply press
+enter what version you can just press enter one more time to verify what
+they're saying in parenthesis 20 is fine with us mpm is good do we want to use
+mpm run build no actually uh in this case we're going to say no and we're
+going to say mpm run Dev that's what we want to use and the server is going to
+to be 5173 and that's it we can see that this has generated
+three new FS for us the docker file which we already know a lot about this one has some specific details in it but
+you can see that again it's based off of the same thing it starts from a specific version
+sets up the environment variables sets up the working directory and run some commands we also have a Docker ignore
+where we can ignore some additional files and then there's this new file compose
+do yaml while all of these files are important with using do compose yaml is
+the most important one and you can read all of these comments but for now I just want to delete them to show you what it
+is comprised of we simply Define which Services we want our apps or containers to use we
+have a server app where we build the context specify environment variables and specify the ports
+of course these can get much more complicated in case you have multiple Services you want to run which is
+exactly what I want to teach you right now here they were even kind enough to provide an example of how you would do
+that with running a complete postgress database so you can specify the database
+database image and additional commands you can run but more on that later we're
+going to approach it from scratch for now we can leave this empty composed yaml and first let's focus on just the
+regular Docker file in this case we can replace this Docker file with the one we
+have in a react Docker application so copy this one right here and paste it
+into this new one this one we already know what it is doing now moving inside of the yaml file
+here we can rename the server into web as that's a common practice for running
+web applications and not servers we can also remove environment
+variables as we're not using any and we can leave the port finally we
+need to add the volumes for our web service so we can say volumes make sure
+to provide a space here and then a dash and that's going to be colon slapp and
+another Dash slapp SL node modules does this ring a bell it's
+similar what we have done before manually by using the docker build command but now we're doing it all with
+this compos yaml file and now all we have to do is run a new command Docker
+compose up and press enter and as you can see we get a permission denied you
+never want to see this if you're in Windows maybe you're used to seeing this every day in which case you simply have
+to close Visual Studio code right click it and then press press run as
+administrator that should give you all the necessary permissions on Mac OS or Linux you can simply add PSE sudo before
+the command then it's going to ask you for your password and it's going to rerun it
+with admin privileges so let's press enter and the process started it's
+building it out now let's debug this further we get the same response we've
+gotten before hm what could this be Port is or the allocated oh yeah we forgot to
+delete or close our container that we use for previous react application so
+now we know the easy way to do it we simply go here we select it and we can
+stop it or delete it once it is stopped we can go back and
+then simply rerun the command I want to lead you through all of the commands together even with the failed ones just
+so you can get the feel of how you would debug or reapo specific aspects once you
+encounter errors that's what being a real developer is getting stuck
+resolving the obstacle and getting things done and finally let's run the
+command it's running it and if we go to Local Host 5173 ah the same thing as before any
+guesses the answer is that we once again forgot to add the Das Dash host to our V
+Dev script right here so if we added stop our application from
+running by pressing contrl C this is going to gracefully stop it the cool
+thing about Docker compose is that it's also stopping the container that it's spun up and now that we have canceled
+our action we can try to rerun it with pseudo doer compos up but this time with
+host included and press enter it's going to rebuild it and if we open it up now
+it works but still this isn't optimal for developer experience is it every time we
+make a change to the package file we have to rerun the container sure Docker
+compose solves the problem of showing upto-date code changes through volumes
+letting us manage multiple containers in a single file and let us do both things
+building and running images but it still doesn't do it automatically when we
+change something related to the package files or when we think it's needed to rebuild the image and this is where our
+next Docker feature comes in Docker compose watch as its name suggests
+Docker Compose Watch (MERN Demo)
+Docker compose watch listens to our changes and does something like
+rebuilding our app rerunning the container and more it's a new feature
+that automatically updates our service containers when you work so what
+specific things can we do do with Docker compos watch we can do three main things
+first of all we can sync the sync operation moves changed files from our
+computer to the right places in the container making sure that everything stays up toate in real time this is
+handy when we're working on any app because it lets us instantly see any changes we make while the app is
+running the second thing Docker compos watch can do is rebuild the rebuild
+process starts with the creation of new container images and then it updates the
+services this is beneficial when rolling out changes to applications in production guaranteeing the most recent
+version of the code is in operation and finally it can perform something known
+as a sync restart the sync restart operation merges the sync and rebuild
+processes it begins by syncing modifications from the host file system to The Container
+paths and then restarting the container this is beneficial during the development and testing of applications
+ensuring that the most recent code version is active with immediate reflection of changes in the running
+application and in simple terms Docker compos file watch is a cool tool that
+keeps our cooking ingredients up to dat while we're in the kitchen to make sure
+it works properly we need to tell it how to build each meal of course by defining
+the build section in our composed yaml file this way when we tweak a recipe or
+make changes to our application Docker compos file watch knows how to update
+the meal or in this case the service container to see it in action I have created a basic mern project so first
+download the starter code from below this course then read rename it from starter to just m Docker and you can see
+that this is your typical full snack application it has the front end which is a react application and a back end
+including a database now I'm going to teach you how to dockerize it as you can
+see we're dockerizing everything from vanilla files over to react v m and
+later on even nextjs I want to fulfill the promise of this video and that is to
+teach you how to dockerize any application so let's start creating our
+first Docker files you know the drill don't you I will Begin by creating a new
+Docker file for the frontend repository and here we can essentially
+paste everything we already had within the react project because this is not going to change much so let's copy it
+and paste it right here now just to make sure that this is a bit clearer and simpler to understand we can also remove
+the comments as now we we know what most of these commands do so let's remove all
+of the comments and then we're going to have a much cleaner working environment
+there we go and in this case as you already know doing this add group add
+user it's just an extra step to make to add more safety to our container but
+it's not necessary so in this case we can even comment out these two commands
+as well as these three commands so that leaves us with something like this get
+the from image set the working directory copy it run it copy the entire app that
+got installed after running mpm install expose it and run it this is a simple
+Docker file for our react application and now we have it within our front end
+directory don't forget that we can also add a do Docker ignore which is going to
+just ignore nodecore modules and this entire Docker file we also have to have
+it for the backend because it's going to be another container so here we can create a new file called Docker file and
+paste everything we have here we can modify it slightly though because this time we want to expose it on a different
+end point such as 8,000 and we also are going to run it by running mpm start not
+mpm run Dev that's it we can also add a DOT Docker ignore and add the node
+modules because we want to ignore them on the backand side as well so now we
+have everything we need besides one thing one thing that ties those two Services together and that my friends is
+the compose do yaml file this allows us to specify everything we want to do with
+this specific Docker compose application and I really took my time to comment
+this one file in its entirety so you can know exactly what each line does So
+Below this course you can find a complete compos yaml file for the M application copy it and paste it here
+it's about 100 lines long but it only has about 10 to 15 runnable lines
+everything else is just Commons but I wanted to go over the comments with you so we can fully understand how to create
+a bit of a more complicated yaml file that runs three different Services web
+which is her front-end application API which is her back end and the database
+at the same time so let's dive deeper into this together first we have to
+specify the version of Docker compose this is not a version of Docker this is just a version of the docker compose
+file we're using in this case 3.8 is fine or if you're using some newer composed features then you want to bump
+it up according to the documentation next and most important step is to define the services and
+containers to to be run you do that by saying services and then you define Individual Services in this case we're
+defining the frontend service you can use any name but a standard naming convention is to use web for the front
+end so as we move to this file I'm going to remove the comments to show you that
+indeed it is much simpler than it looks like with all those comments we're going to dive deep into web soon but for now I
+have collapsed it for you to see the general structure then we Define the API
+or the service container and then we Define the DB service finally we Define
+the volumes to be used by the services and here we create a new volume of a
+name anime as this app is going to be about showing anime shows so looking at
+this from a high level overview we have the version we have the services and we
+have the volumes so now let's dive deeper into each one of the services starting with web first we need to use
+depends on command to specify that service depends on another service in
+this case we specify that the web depends on the API service this means
+that the API service will be started before the web service okay that's important because to be able to use our
+front-end application we need to be able to have the API loaded then we specify the buildt
+context for the web service what this means is simply hey tell me where the docker file for this service is located
+in this case it is in/ front end then we specify which ports to
+expose the first number is the port on the host machine and the second one is the port inside the container and we use
+a concept known as Port mapping then you can specify any environment variables this is pretty
+simple we simply expose the V API URL to Local Host 8 ,000 and then everything
+below is for the docker compos watch mode anything mentioned under develop will be watched for changes by Docker
+compose watch and it will perform the action that's mentioned here so we say
+develop and then we specify the files to watch for changes we watch for path front and
+package Jon and then rebuild the container if there are any changes similarly we watch for package lock Json
+and then perform the action of rebuild whenever something changes we also want to listen for the
+changes in the front end directory and then we simply call the sync action with this one and this is it for the web
+service diving into the API it's similar we defined that the API service depends
+on the database service we specify the build context for the API service we
+specify the ports to expose and do Port mapping we specify the environment
+variables in this case the DB URL and finally we establish the docker compos
+watch mode for the API service by specifying the file to watch for
+changes same thing as before in the package Json and package lock Json and
+then watches for changes and then syncs it across the entire application and finally we have the
+database here we want to specify the image we want to use for the DB service
+from the docker Hub if if we have a custom image we can specify that in this format in the above two Services we're
+using the build context to build the image for the service from the docker file so we specify the build ASF
+frontend or build ISB backend this is interesting so we're not referring to
+existing images rather we build our own images from Docker file as we learned
+before but in this case we are using image from the docker Hub so we specify
+it as image at latest you can find the name and the tag and of course all
+of this is available on the docker Hub you can just explore the official images so we use it we specify the ports and do
+Port mapping and generally you want to put the ports to your mongodb Atlas here
+but for demo purposes we can use a local mongodb instance and usually mongodb
+runs in Port 27017 so we're exposing that port and mapping it to the port inside the
+container how would you test this out locally to see if the database is live well you can use a tool called mongodb
+Compass finally we specifi the volumes to mount for the DB service in this case
+we want to mount the volume named anime inside the container at data DB
+directory this is done so that the data inside of the mongodb container is
+persisted even if the container is stopped and this is it this is how you
+create your first yaml compos file it's not that hard is it it's not that easy
+either this is your first time but trust me you will get better but this is a yaml file for already a pretty big
+application with three separate Services you can try building your own that is much simpler and as a matter of fact we
+have already done that in the last project where we have a really simple just a web service in here so now we
+have stepped up our game a bit and we're doing it for a complicated app to show you the beauty of Docker composed f
+while watch so remember we're building three different images and containers
+through one file and one command that's power of Docker compose and on top of
+that we're using Docker compost file watch to automatically build and run
+these containers if we make any changes to the application so let's open up our
+terminal CD into m- doer and run pseudo do Locker compose up
+and press enter enter your password and see the
+magic happen it's going to run all the services one by one notice that first it
+created our DB image and container then it's going to start working on the API
+and we can see that here and finally it's going to move over to our web
+application exactly as we have specified in our yaml file
+so let's leave it do its thing there we go after about a minute we can see that
+the process has finished by this long log file right here don't worry it's not
+an error rather you can see that it successfully containerized all three
+different applications the DB the API and the web and attach them together if
+we go back to Docker desktop we can see that right here if we go to Docker
+desktop we can see that right here we have the mer Docker web mer doer API and
+we also have three different containers under mer do right here DB
+API and web and we also have the specified volumes so now that we have
+this running let's open up our browser and navigate to Local Host
+5173 there we go we have a fully functional m applic
+running on your device locally without you having to spin up the database the
+front end and the back end and inputting all of these environment variables manually it just works that's the power
+of doer what we have here is a simple application where you can share your favorite anime so go to share enter the
+name I'm going to do something like my hero Academia you can also enter the
+link and you can also enter a descript deson finally click submit that's it if
+you refresh you can notice that it stays there and this entry actually got added
+to our database before Docker we would have to have two or three terminals open
+running frontend back in a database at the same time now it's just one command and we have our app running in real time
+but now let's try to make some changes if I go right here and navigate to our
+front end part of our application as that's the easiest to notice we can go to app jsx and right in our nav bar
+let's try to add a new link by duplicating this one and say something like
+popular if we save it and go back and reload nothing changes so how can we
+ensure that the updates happen automatically and in real time back in
+our code we can open up a terminal and then split it to create a new new one
+alongside it there we can run the command Pudo Docker compose watch we're
+finally getting to the watch part if you press enter and enter your password
+you'll see that something will start to happening it looks like it's starting with the watch configuration so now if I
+save this file right here with popular included go back to the browser and
+reload indeed popular is there and you can see that if I save the file something happens here there's an update
+happening in real time so if I change it save it and go back it's updated in real
+time now let's remove it and let's try to test whether this works for the back
+end as well we can do a quick test by installing a simple package called
+colors. JS that's just mpmi colors and it allows you to change the colors in
+your terminal with this we'll very easily be able to see whether the package got installed or not so back in
+our code we can navigate to our package Json of the backend
+part and using our terminal we can install the package so let's split the terminal one more time CD into
+backend and then let's run mpm install or mpmi callers this is going to add it
+we can kill this terminal in the middle and immediately you can see that something started happening on that
+watch part it looks like it's listening to it and rebuilding the entire application with this project
+installed that's great let's also explore the code a bit
+right here in the index you can see that we are enabling this colors package
+coming from colors and we are also logging it out in a rainbow of Coler
+whenever we go to Local Host 8000 so back in our browser let's simply rigate
+to Local Host 8,000 we get a Hello World here but
+we're more interested in this hello world here because this one means that the package got successfully installed
+there we have it without a refresh rebuild or rerun our application works
+in real time with the help of Docker compose watch now before we move on to
+the very interesting part part of this course which is dockerizing full stack modern xgs applications let me show you
+another cool docker's new and cool feature when we create container images
+Docker Scout
+for our applications we're essentially stacking layers of existing images and
+software components however some of these layers or components might have
+security vulnerabilities making our containers and their applications susceptible to attacks Dockers Scout is
+a tool that helps us be proactive about security it scans our container images
+looks at old the layers and software pieces like building blocks inside them and creates a detailed list called a
+software build of materials es bomb for short this list includes everything our
+container is made of then Docker Scout checks the list against an always updated database of known
+vulnerabilities it's like having a continuously updated list of potential weak points if it finds any it lets us
+know so we can fix them before deploying our application we can use Docker Scout in different places like Docker desktop
+Docker Hub and even through commands in Docker command line interface if we go
+back to Docker desktop you can see the docker Scout section right here on the left and from the drop down we can
+decide on which image we want to analyze let's select the M Docker web latest as
+we just created it and see what it shows right now it says zero vulnerabilities and let's view the
+packages and cves here you can get a complete report analysis of our image
+luckily our application doesn't have any vulnerabilities it mentions all the
+things that we need from all the layers and images that are related to it and a list of packages it's worth checking
+every time to ensure that we're not shipping anything that is easy to break now let's address the elephant the room
+Full Stack Next.js 14 Demo
+and that is how to dockerize a nextjs application more specifically a full
+stack nextjs application and the short answer would be the same as what I've
+taught you before in this course I went ahead and created a small full stack
+application using v.d this is vel's new component
+generator and the starter source code for that application is below this course copy it pasted right here and
+just rename the starter for just next Docker so for one last time in this
+course let's take this as a recap of how to dockerize a full stack modern nextjs
+application first of all we're going to open up our terminal and navigate to
+Next Docker then we're going to initialize the docker part of the application by
+running Docker in it in this case we can select node
+version 20 is fine we're going to use mpm we don't want to use mpm run build
+for starting the server but we do want to use mpm run Dev as that's how it is
+with nextjs applications and we want to listen on Port 3000 now as Docker CLI conveniently
+tells us three files have been created the docker files the compos yaml and the
+readme docker MD all the files we need to dockerize our application are ready
+now let's take a moment to review them and tailor them to our application let's
+start with our Docker file here we have some comments to help us get started but
+at this point we don't really need them so this is how you can define specific
+arguments to be used within your application for example they Define node version so they can specify it in
+multiple places but as a matter of fact let's rewrite this on our own to fully
+brush upon our knowledge of Docker file syntax we can start by inheriting from a
+specific image in this case we can start from node as our application is going to be based off node feel free to provide a
+specific version or just leave it like this then we want to set the working directory by saying work there SLA we
+want to copy the package Json and package lock Json into the image by saying copy package everything. Json
+into slash then we want to run mpm install we want to copy the rest of the
+source files into the image by saying copy dot dot we want to expose the 3,000
+endpoint and finally we want to run mpm run Dev that's all there is to it of
+creating your Docker file capable of dockerizing next s now let's also look
+into our compose yaml file in this case let's also rewrite it from
+scratch first we can Define the version of our composed yaml file something like
+3.8 in this case should do and just to repeat it's not a version of Docker we're using it's a version of a specific
+yaml file Syntax for Docker so if we using some newer syntax just figure out
+in which version they're supported next we Define Services we can call it something like
+front end for the front end side and then we Define build where we have the
+context right here dot we're immediately in there and Docker file is going to be
+called Docker file so in this build we're just pointing to the docker file
+from where it's going to build out our image then we can Define the ports right
+here next to the build by saying Dash 3,000 mapped to
+3,000 and then we want to use Docker compose to watch for the changes and
+rebuild the container we can do that by going below the ports and then saying
+develop watch and then we provide what we want to watch for so which path in this case
+we can do Dash path of/ package.json and then the command or
+the action in this case of what we want to do once it notices
+the changes in that file in this case we want to rebuild our image we can also
+repeat the procedure with path of/ next. config.js and it's going to be
+action rebuild we can do that also for the package lock Json so path is
+something like slash package-lock dojon and ction rebuild and
+finally we can add a path for all the other files meaning simply dot where
+we're going to do the target of app and an action of sync so this is going to
+make sure that we sync our container with our host machine finally we can Define some
+environment variables right here below develop so environment in this specific
+app I'm using Mong DB Atlas so we need to pass in the connection string I'm
+going to say DB URL and then I'm going to give you access to this string you can also find
+it below in the course it's going to be this one right here and don't forget if
+you were running a local instance of mongodb you would need to do something that looks like this where you define
+the image you map the ports to the local mongodb Compass version Define the
+environment variables and then specify a volume but in this case it's done for us
+automatically because we're just referring to the deployed mongodb Atlas database finally we specify the volumes
+of tasked because our application is going to be about tasks and that's it
+that's our compose yaml finally open up the terminal and you simply need to run
+pseudo Docker compose up enter your
+password and and it's going to start building it it's going to start with the front end and soon you'll see a lot of
+things that you see when building out your typical nextjs application it will start installing all of the packages and
+everything needed to run our application locally and there we have it our
+application is not only dockerized but live on Local Host 3000 let's open it up
+and test it out there we go now we can see that this is a typical to-do application where we have some
+registered tasks we can see the task right here we have one task to learn Docker right here and thankfully you'll
+be able to take that box off once you finish watching this video and we can also create a new task now I
+purposefully left this typo right here in registered to check whether we can fix it within our code what do you think
+will it work or not so if we go to search and search for registered you can see it right here on
+top top it's actually being mentioned two times so if we change it and spell
+it properly which is registered and go back to our
+application it didn't work our Docker wasn't watching for
+changes unfortunately we forgot to tell Docker to watch for changes but thankfully you know how to
+do so simply open up the terminal split it and run sud sudo Docker compose
+watch enter the password it started doing its thing and it looks like it's listening
+for changes now we have made the changes already so let's simply press command or
+contrl S to save them and as soon as you do that you'll see syncing front end after changes were
+detected going back through application and reloading you can see that the typo has
+indeed been fixed so there you have it you just learned how to dockerize the most modern web
+application there is a full stack nextjs application but with that you've also
+went through the process of dockerizing a simple vanilla JS script to doing something like V react MN and then next
+as well not only have you learned all of the most important Docker Concepts you
+have put them to use in five different kinds of applications you've learned learned how to build images using the
+docker file you've learned how to use Docker compose and create compose yaml
+files and with that compose run as many services as you want with a single
+command you've also learned how to listen for changes in your applications so in a nutshell you've
+learned how to dockerize any application you can build and finally let's discuss
+the elephant in the room should should you or should you not dockerize your specific application in my opinion it's
+Should You Dockerize your application?
+worth considering dockerization for any application be it front-end backend or full stack let me tell you why if you
+have big and complex apps they usually have many moving Parts like databases
+servers and apis Docker packages everything an app needs into a
+standardized unit or a container making it easier to manage IM imagine having a
+large e-commerce platform with a web server a database and multiple apis for
+payment order processing and inventory management docar rizing each component
+ensures that they work together seamlessly and can be easily deployed or scaled as needed similarly if you have
+an app built from many small pieces or microservices which involves breaking an
+app into small independent features Docker containers are perfect for isolating and managing these Services
+separately for example if you're building a social media application you may have separate micro services for
+user authentication posting content handling notifications and managing connections dockerizing each
+microservice allows independent development testing and scaling of these services without affecting the entire
+application another reason to dockerize any app is that it just works everywhere
+our development team at JSM uses different operating systems Windows Mac
+OS and Linux and without Docker setting up the development environment on each machine can lead to
+inconsistencies Docker ensures that every developer regardless of their operating system works in the same
+containerized environment minimizing compatibility issues if that's what you're looking for
+similar to Uber you can dockerize your app and reduce the development hassle
+Docker also allows for easy scaling using Docker makes it simple to handle
+more users how well imagine you're running a popular online streaming service as more users sign up you need
+to scale your video transcoding service Docker allows you to easily replicate
+and deploy additional transcoding containers ensuring smooth scaling without disrupting the entire
+application and with Docker updates happen smoothly imagine imagine you manage a web application with frequent
+updates without Docker deploying updates might require manually adjusting configurations in the server which takes
+time and will most likely break your app with Docker you can update your app
+consistently without worrying about breaking dependencies ensuring that changes go live smoothly Docker also
+simplifies steamwork because it provides a consistent environment for all Developers for example if you're working
+on a machine learning project Docker ensures that every team member regardless of their local setup works
+with the same environment containing the necessary libraries dependencies and configurations everyone works in the
+same containerized setup reducing compatibility issues and making collaboration that much smoother and
+finally old apps new tricks even for older applications Docker can breathe a
+new life it helps in managing dependencies isolating the application and making it more compatible with
+modern systems imagine you're working on a big Tech that is using a big scary
+Legacy monolitic application written in an older programming language or version
+dockerizing that application allows you to isolate the application and its dependencies making it easier to
+maintain from your environment where you might be using the latest versions of runtimes or languages almost every
+company uses dockerized applications whether we're dealing with a small or big big application Docker can help
+solve problems or stop them from happening in the first place so no matter what kind of app you're working
+on using Docker has become a smart move to make things smoother and avoid issues
+and congratulations I truly do mean it you've just learned Docker an in demand
+engineering tool as a thank you for making it this far for committing to learning and becoming a better developer
+I want to give you a reward I'm holding a Docker swag giveaway where we'll give away some special merch to Dedicated
+developers that came to the end of the course to learn more and take part just click the link in the description
+winners will be notified by email and if you reach this point you've
+done something that only few developers do you can now confidently talk about Docker its main Concepts and best
+practices and most importantly you can dockerize any modern front-end backend
+and full stack app I'm proud of you
