@@ -22,6 +22,7 @@ app.use(
   })
 );
 app.use(cookieParser());
+app.use(express.json());
 
 // health check
 app.get("/", (_, res) => {
